@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mahmoud Ismail</title>
+<meta name="description" content="Mahmoud Ismail, Data Analytics Engineer in Alexandria, Egypt. End-to-end BI with SQL Server, SSIS, SSAS Tabular, DAX, Power BI, Python and Power Platform.">
+<meta property="og:title" content="Mahmoud Ismail · Data Analytics Engineer">
+<meta property="og:description" content="End-to-end BI: SQL Server, SSIS, SSAS Tabular, DAX, Power BI, Python ETL and Power Platform automation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mi7773.github.io/MahmoudIsmail/">
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#F4F6F5;
+  --surface:#FFFFFF;
+  --ink:#13201C;
+  --muted:#56665F;
+  --rule:#D6DDDA;
+  --accent:#0E7A69;
+  --accent-soft:#E0F0EC;
+  --amber:#C98A00;
+  --amber-soft:#FBF1D6;
+  --code-bg:#13201C;
+  --code-ink:#DDE8E4;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0D1513; --surface:#141F1C; --ink:#E4EDEA; --muted:#93A6A0; --rule:#26352F;
+    --accent:#3FC6AF; --accent-soft:#12302A; --amber:#F2B632; --amber-soft:#2E2610;
+    --code-bg:#08100E; --code-ink:#D5E3DE;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0D1513; --surface:#141F1C; --ink:#E4EDEA; --muted:#93A6A0; --rule:#26352F;
+  --accent:#3FC6AF; --accent-soft:#12302A; --amber:#F2B632; --amber-soft:#2E2610;
+  --code-bg:#08100E; --code-ink:#D5E3DE;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;padding-inline:20px}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin-inline:auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);margin-inline:-20px;padding:12px 20px}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.bar .mark{font:700 17px/1 var(--display);color:var(--ink);text-decoration:none}
+.bar nav{display:flex;gap:20px;flex-wrap:wrap}
+.bar nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}
+.bar nav a:hover{color:var(--ink)}
+@media (max-width:640px){.bar nav{display:none}}
+
+/* hero */
+.hero{padding-block:72px 40px;display:grid;gap:40px}
+.hero .status{display:inline-flex;align-items:center;gap:8px;font:500 13px/1 var(--mono);color:var(--accent);background:var(--accent-soft);padding:8px 12px;border-radius:999px;width:fit-content}
+.hero .status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.hero h1{font-size:clamp(48px,9vw,112px);font-weight:800;letter-spacing:-.035em;line-height:.95;margin-top:20px}
+.hero .role{font:500 clamp(20px,2.6vw,28px)/1.3 var(--display);color:var(--muted);margin-top:18px;max-width:28ch}
+.hero .role b{color:var(--ink);font-weight:700}
+.hero p.lede{max-width:62ch;font-size:18px;margin:24px 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:8px;font:600 15px/1 var(--body);text-decoration:none;border:1px solid var(--rule);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+.btn svg{width:18px;height:18px;fill:currentColor}
+
+/* pipeline */
+.pipeline{border:1px solid var(--rule);background:var(--surface);border-radius:12px;padding:22px 22px 18px}
+.pipeline .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.node{font:500 14px/1 var(--mono);padding:10px 12px;border-radius:6px;background:var(--bg);border:1px solid var(--rule);white-space:nowrap}
+.node small{display:block;font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.02em}
+.node.out{background:var(--amber-soft);border-color:color-mix(in srgb,var(--amber) 45%,transparent)}
+.arrow{color:var(--muted);font:500 16px/1 var(--mono)}
+.pipeline .branch{margin-top:12px;padding-left:18px;border-left:2px dashed var(--rule);display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.pipeline .foot{margin-top:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--rule)}
+.stat{padding:22px 20px 22px 0}
+.stat + .stat{padding-left:20px;border-left:1px solid var(--rule)}
+.stat .n{font:700 clamp(28px,4vw,40px)/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat .n em{font-style:normal;color:var(--accent)}
+.stat p{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.45}
+@media (max-width:640px){.stats{grid-template-columns:1fr}.stat,.stat+.stat{padding:18px 0;border-left:0}.stat+.stat{border-top:1px solid var(--rule)}}
+
+/* sections */
+section.block{padding-block:72px 8px}
+.head{display:grid;grid-template-columns:220px 1fr;gap:24px;margin-bottom:32px;align-items:end}
+.head h2{font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-.02em}
+@media (max-width:760px){.head{grid-template-columns:1fr;gap:8px}}
+
+/* experience */
+.job{display:grid;grid-template-columns:220px 1fr;gap:24px;padding-block:28px;border-top:1px solid var(--rule)}
+.job .when{font:500 13px/1.5 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.job .when .promo{display:inline-block;margin-top:10px;color:var(--amber);background:var(--amber-soft);padding:4px 8px;border-radius:4px}
+.job h3{font-size:24px;font-weight:700}
+.job .org{color:var(--muted);margin-top:4px}
+.ladder{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ladder span{font:500 13px/1 var(--mono);padding:7px 10px;border-radius:4px;border:1px solid var(--rule)}
+.ladder span.now{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.job ul{margin:18px 0 0;padding-left:1.1em;display:grid;gap:10px;max-width:70ch}
+.job li::marker{color:var(--accent)}
+@media (max-width:760px){.job{grid-template-columns:1fr;gap:10px}}
+
+/* case studies */
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.case{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.case h3{font-size:21px;font-weight:700}
+.case p{margin:0;color:var(--muted)}
+.case .flow{font:500 12.5px/1.7 var(--mono);color:var(--ink);background:var(--bg);border-radius:6px;padding:10px 12px;overflow-x:auto;white-space:nowrap}
+.case .flow i{font-style:normal;color:var(--muted);padding-inline:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+.tags span{font:500 12px/1 var(--mono);color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:5px 7px}
+@media (max-width:760px){.cases{grid-template-columns:1fr}}
+
+/* code */
+.measure{margin-top:16px;background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:22px 24px;font:400 14px/1.75 var(--mono);overflow-x:auto}
+.measure .c{color:#7E948D}.measure .k{color:#F2B632}.measure .f{color:#5FD4BF}.measure .m{color:#E9A7C8}
+
+/* projects */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.filters button{font:500 13px/1 var(--mono);padding:9px 12px;border-radius:999px;border:1px solid var(--rule);background:transparent;color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proj{background:var(--surface);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.proj .thumb{aspect-ratio:16/10;overflow:hidden;background:var(--bg);border-bottom:1px solid var(--rule)}
+.proj .thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s ease}
+.proj:hover .thumb img{transform:scale(1.04)}
+.proj .thumb.code{display:grid;place-items:center;font:500 15px/1.4 var(--mono);color:var(--accent);background:var(--accent-soft);text-align:center;padding:16px}
+.proj .body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.proj h3{font-size:18px;font-weight:700}
+.proj h3 a{color:var(--ink);text-decoration:none}
+.proj h3 a:hover{color:var(--accent)}
+.proj p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
+.proj .links{display:flex;gap:16px;font-size:14px;font-weight:600;margin-top:auto;padding-top:6px}
+.proj .links a{text-decoration:none}
+.proj .links a:hover{text-decoration:underline}
+@media (max-width:900px){.projects{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.projects{grid-template-columns:1fr}}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
+.skillset{padding-block:20px;border-top:1px solid var(--rule)}
+.skillset h3{font:600 15px/1.3 var(--body);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:14px;padding:6px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--rule)}
+@media (max-width:760px){.skills{grid-template-columns:1fr}}
+
+/* education */
+.edu{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.edu .item{padding:20px 0;border-top:1px solid var(--rule)}
+.edu h3{font-size:19px;font-weight:700}
+.edu p{margin:6px 0 0;color:var(--muted)}
+.certs{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.certs li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--rule)}
+.certs li span:last-child{font:500 13px/1.6 var(--mono);color:var(--muted);white-space:nowrap}
+@media (max-width:760px){.edu{grid-template-columns:1fr}}
+
+/* contact */
+.contact{margin-top:88px;background:var(--ink);color:var(--bg);border-radius:16px;padding:48px clamp(24px,5vw,56px);display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end}
+.contact h2{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-.03em}
+.contact p{color:color-mix(in srgb,var(--bg) 70%,transparent);margin:14px 0 0;max-width:44ch}
+.contact dl{margin:0;display:grid;gap:14px}
+.contact dt{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--bg) 60%,transparent);margin-bottom:6px}
+.contact dd{margin:0;font-size:16px;overflow-wrap:anywhere;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.contact dd a{color:var(--bg)}
+.copy{font:500 12px/1 var(--mono);padding:6px 9px;border-radius:4px;border:1px solid color-mix(in srgb,var(--bg) 35%,transparent);background:transparent;color:var(--bg);cursor:pointer}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+footer.site{padding-block:28px 40px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">Mahmoud Ismail</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero">
+    <div>
+      <span class="status">Data Analytics Engineer · AHBS · Alexandria, Egypt</span>
+      <h1>Mahmoud<br>Ismail</h1>
+      <p class="role">I build <b>BI systems end to end</b>, from SQL Server to the Power BI dashboard leadership opens every morning.</p>
+      <p class="lede">I model data in SQL Server, move it with SSIS and Python, shape it in SSAS Tabular with DAX, and put it in front of decision-makers in Power BI. I also automate the business processes around that data with Power Automate, Power Apps, Dataverse and Azure. Mechanical engineer by degree, back-end engineer by training.</p>
+      <div class="cta">
+        <a class="btn primary" href="Mahmoud_Ismail.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16 6 10l1.4-1.4 3.6 3.6V3h2v9.2l3.6-3.6L18 10l-6 6ZM5 20v-2h14v2H5Z"/></svg>Résumé (PDF)</a>
+        <a class="btn" href="https://www.linkedin.com/in/mi7773" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v5.46h-4v-4.84c0-1.16-.02-2.64-1.6-2.64-1.61 0-1.86 1.26-1.86 2.56v4.92h-4v-11Z"/></svg>LinkedIn</a>
+        <a class="btn" href="https://github.com/mi7773" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>GitHub</a>
+      </div>
+    </div>
+
+    <figure class="pipeline" aria-label="The BI stack I work across" style="margin:0">
+      <div class="row">
+        <span class="node">SQL Server<small>T-SQL · modeling</small></span><span class="arrow">→</span>
+        <span class="node">SSIS<small>ETL orchestration</small></span><span class="arrow">→</span>
+        <span class="node">SSAS Tabular<small>DAX measures</small></span><span class="arrow">→</span>
+        <span class="node out">Power BI<small>KPI &amp; target dashboards</small></span>
+      </div>
+      <div class="branch">
+        <span class="label">and from the model</span><span class="arrow">→</span>
+        <span class="node">Python ETL<small>DAX queries · joins</small></span><span class="arrow">→</span>
+        <span class="node out">Dataverse<small>Power Apps · Power Automate</small></span>
+      </div>
+      <figcaption class="foot"><span class="label">The stack I work across, every day</span><span class="label">Azure service principal auth</span></figcaption>
+    </figure>
+
+    <div class="stats">
+      <div class="stat"><div class="n"><em>12</em> months</div><p>from Junior to Mid-Level Data Analytics Engineer at AHBS</p></div>
+      <div class="stat"><div class="n"><em>24/7</em></div><p>scraping &amp; automation service rebuilt in Python + Playwright, responding in seconds</p></div>
+      <div class="stat"><div class="n"><em>C-level</em></div><p>monthly target sign-off moved from manual to an auditable Power Automate flow</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="head"><span class="label">Experience</span><h2>Where I've shipped</h2></div>
+
+    <article class="job">
+      <div class="when">Sep 2025 – Present<br><span class="promo">Promoted Sep 2026</span></div>
+      <div>
+        <h3>Andalusia Health for Business Solutions</h3>
+        <div class="org">AHBS · Alexandria, Egypt</div>
+        <div class="ladder"><span>Junior Data Analytics Engineer · Sep 2025</span><span class="now">Data Analytics Engineer (Mid-Level I) · Sep 2026</span></div>
+        <ul>
+          <li>Built a Python ETL pipeline that pulls measures from an SSAS Tabular model with DAX queries, resolves Dataverse lookup IDs through multi-table joins, and upserts the results into Dataverse in one automated script, authenticated as an Azure service principal.</li>
+          <li>Delivered a complete BI solution end to end: source data modeling in SQL Server (T-SQL), ETL orchestration in SSIS, and a Power BI dashboard for business users and decision-makers.</li>
+          <li>Re-engineered a legacy Selenium scraping and automation service in Python and Playwright with rebuilt logic, so it now runs 24/7 with responses in seconds. Used AI-assisted development (Claude Code) throughout the migration.</li>
+          <li>Replaced the manual monthly target approval process with a Power Automate workflow and embedded Office Scripts, giving C-level stakeholders a sequenced, auditable sign-off and one source of truth for approved targets.</li>
+          <li>Built the Egypt edition of the target-proposal Power Apps canvas app, adapting the KSA solution to local hierarchy and business rules and feeding validated data straight into the approval workflow.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when">Jan 2023 – Dec 2023</div>
+      <div>
+        <h3>Freelance Data Analyst</h3>
+        <div class="org">Hsoub Platform · Remote</div>
+        <ul>
+          <li>Delivered end-to-end analysis projects for clients, including stock portfolio revenue and loss analysis against expected performance, and cleaning and visualizing open-ended survey responses.</li>
+          <li>Owned scoping, requirements gathering, analysis and client communication from kickoff to delivery.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section class="block" id="work">
+    <div class="head"><span class="label">Selected work · AHBS</span><h2>Systems that run without me watching</h2></div>
+    <div class="cases">
+      <article class="case">
+        <span class="label">Data engineering</span>
+        <h3>SSAS → Dataverse sync</h3>
+        <p>One script replaces a manual export–lookup–import routine. Measures leave the tabular model, lookups are resolved, and rows land in Dataverse ready for the apps that use them.</p>
+        <div class="flow">SSAS Tabular <i>→ DAX query →</i> pandas joins <i>→ lookup IDs →</i> Dataverse upsert</div>
+        <div class="tags"><span>Python</span><span>DAX</span><span>Dataverse Web API</span><span>Azure app registration</span></div>
+      </article>
+      <article class="case">
+        <span class="label">Business intelligence</span>
+        <h3>End-to-end BI solution</h3>
+        <p>Source modeling, scheduled ETL and a Power BI dashboard, delivered as one piece so decision-makers see numbers they can trust.</p>
+        <div class="flow">Source <i>→</i> SQL Server model <i>→</i> SSIS packages <i>→</i> Power BI</div>
+        <div class="tags"><span>T-SQL</span><span>SSIS</span><span>Power BI</span><span>Data modeling</span></div>
+      </article>
+      <article class="case">
+        <span class="label">Automation</span>
+        <h3>Scraping service rebuild</h3>
+        <p>A fragile Selenium service rewritten in Playwright with new logic. It went from needing attention to running around the clock.</p>
+        <div class="flow">Selenium (legacy) <i>→ rewrite →</i> Python + Playwright <i>→</i> 24/7, seconds per response</div>
+        <div class="tags"><span>Python</span><span>Playwright</span><span>Claude Code</span></div>
+      </article>
+      <article class="case">
+        <span class="label">Power Platform</span>
+        <h3>Target proposal &amp; approval</h3>
+        <p>A canvas app collects target proposals for Egypt, and a Power Automate flow walks them through sequenced executive approval.</p>
+        <div class="flow">Power Apps (EG) <i>→ validated →</i> Power Automate <i>→ Office Scripts →</i> approved targets</div>
+        <div class="tags"><span>Power Apps</span><span>Power Automate</span><span>Office Scripts</span><span>Excel</span></div>
+      </article>
+    </div>
+    <pre class="measure" aria-label="Example DAX measure"><span class="c">-- the kind of measure behind a target dashboard</span>
+<span class="m">Target Attainment %</span> =
+<span class="k">VAR</span> Actual = [Net Sales]
+<span class="k">VAR</span> Target = [Approved Target]
+<span class="k">RETURN</span> <span class="f">DIVIDE</span> ( Actual, Target )</pre>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="head"><span class="label">Projects</span><h2>Analysis &amp; code in public</h2></div>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button type="button" id="f-all" data-f="all" aria-pressed="true">All</button>
+      <button type="button" id="f-python" data-f="python" aria-pressed="false">Python</button>
+      <button type="button" id="f-sql" data-f="sql" aria-pressed="false">SQL</button>
+      <button type="button" id="f-excel" data-f="excel" aria-pressed="false">Excel</button>
+      <button type="button" id="f-software" data-f="software" aria-pressed="false">Software</button>
+    </div>
+    <div class="projects">
+      <article class="proj" data-t="python">
+        <a class="thumb" href="https://www.datacamp.com/datalab/w/f9b8da10-e9a8-4e85-b31e-e672d83c6bc3/edit" target="_blank" rel="noopener"><img src="images/nobel_prize_winners.jpeg" alt="Charts from the Nobel Prize analysis"></a>
+        <div class="body">
+          <span class="label">Python · pandas · seaborn</span>
+          <h3><a href="https://www.datacamp.com/datalab/w/f9b8da10-e9a8-4e85-b31e-e672d83c6bc3/edit" target="_blank" rel="noopener">Nobel Prize Laureates, 1901–2023</a></h3>
+          <p>Trends and patterns behind the laureates, using Nobel Prize API data from 1901 to 2023.</p>
+          <div class="links"><a href="https://www.datacamp.com/datalab/w/f9b8da10-e9a8-4e85-b31e-e672d83c6bc3/edit" target="_blank" rel="noopener">View project</a><a href="https://www.linkedin.com/posts/mi7773_datascience-datavisualization-python-activity-7298838838645301248-gw7c" target="_blank" rel="noopener">LinkedIn post</a></div>
+        </div>
+      </article>
+      <article class="proj" data-t="python">
+        <a class="thumb" href="https://www.datacamp.com/datalab/w/3a263700-d026-4cc8-9ed9-0c51ac8b5d32/edit" target="_blank" rel="noopener"><img src="images/analyzing_crime_in_los_angeles.jpeg" alt="Charts from the Los Angeles crime analysis"></a>
+        <div class="body">
+          <span class="label">Python · pandas · matplotlib</span>
+          <h3><a href="https://www.datacamp.com/datalab/w/3a263700-d026-4cc8-9ed9-0c51ac8b5d32/edit" target="_blank" rel="noopener">Crime in Los Angeles</a></h3>
+          <p>Exploring Los Angeles crime data to surface patterns and key insights.</p>
+          <div class="links"><a href="https://www.datacamp.com/datalab/w/3a263700-d026-4cc8-9ed9-0c51ac8b5d32/edit" target="_blank" rel="noopener">View project</a><a href="https://www.linkedin.com/posts/mi7773_datascience-crimeanalysis-python-activity-7301092738744123392-agiu" target="_blank" rel="noopener">LinkedIn post</a></div>
+        </div>
+      </article>
+      <article class="proj" data-t="python">
+        <a class="thumb" href="https://www.datacamp.com/datalab/w/1cfe5029-7ccb-4c7a-b3df-b4509e626a42/edit" target="_blank" rel="noopener"><img src="images/nyc_public_school_sat_scores.jpeg" alt="NYC public school SAT score analysis"></a>
+        <div class="body">
+          <span class="label">Python · pandas</span>
+          <h3><a href="https://www.datacamp.com/datalab/w/1cfe5029-7ccb-4c7a-b3df-b4509e626a42/edit" target="_blank" rel="noopener">NYC Public School SAT Scores</a></h3>
+          <p>Analyzing SAT scores across New York City public schools to uncover key insights.</p>
+          <div class="links"><a href="https://www.datacamp.com/datalab/w/1cfe5029-7ccb-4c7a-b3df-b4509e626a42/edit" target="_blank" rel="noopener">View project</a><a href="https://www.linkedin.com/posts/mi7773_datascience-python-eda-activity-7294156744354652161-te2f" target="_blank" rel="noopener">LinkedIn post</a></div>
+        </div>
+      </article>
+      <article class="proj" data-t="python">
+        <a class="thumb" href="https://www.datacamp.com/datalab/w/170ad28c-ea72-4bc3-b052-6c2bf0c06a9b/edit" target="_blank" rel="noopener"><img src="images/netflix_movie_analysis.png" alt="Netflix movie duration analysis"></a>
+        <div class="body">
+          <span class="label">Python · pandas</span>
+          <h3><a href="https://www.datacamp.com/datalab/w/170ad28c-ea72-4bc3-b052-6c2bf0c06a9b/edit" target="_blank" rel="noopener">Netflix Movie Durations</a></h3>
+          <p>Analyzing Netflix movie durations across a decade to uncover key insights.</p>
+          <div class="links"><a href="https://www.datacamp.com/datalab/w/170ad28c-ea72-4bc3-b052-6c2bf0c06a9b/edit" target="_blank" rel="noopener">View project</a><a href="https://www.linkedin.com/posts/mi7773_datascience-python-eda-activity-7292621162126188546-g8tQ" target="_blank" rel="noopener">LinkedIn post</a></div>
+        </div>
+      </article>
+      <article class="proj" data-t="sql">
+        <a class="thumb" href="https://github.com/mi7773/Data-Cleaning-with-MySQL" target="_blank" rel="noopener"><img src="images/data_cleaning_with_mysql.jpeg" alt="Layoffs data cleaning in MySQL"></a>
+        <div class="body">
+          <span class="label">SQL · MySQL</span>
+          <h3><a href="https://github.com/mi7773/Data-Cleaning-with-MySQL" target="_blank" rel="noopener">Layoffs Data Cleaning</a></h3>
+          <p>Raw layoffs data transformed with MySQL into a clean, analysis-ready table.</p>
+          <div class="links"><a href="https://github.com/mi7773/Data-Cleaning-with-MySQL" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/posts/mi7773_datacleaning-mysql-learningjourney-activity-7283827749419388928-LxtU" target="_blank" rel="noopener">LinkedIn post</a></div>
+        </div>
+      </article>
+      <article class="proj" data-t="sql">
+        <a class="thumb" href="https://github.com/mi7773/Exploratory-Data-Analysis-with-MySQL" target="_blank" rel="noopener"><img src="images/exploratory_data_analysis_with_mysql.jpeg" alt="Exploratory analysis of layoffs in MySQL"></a>
+        <div class="body">
+          <span class="label">SQL · MySQL</span>
+          <h3><a href="https://github.com/mi7773/Exploratory-Data-Analysis-with-MySQL" target="_blank" rel="noopener">Layoffs Exploratory Analysis</a></h3>
+          <p>Exploring the cleaned layoffs dataset in MySQL to find trends and patterns.</p>
+          <div class="links"><a href="https://github.com/mi7773/Exploratory-Data-Analysis-with-MySQL" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/posts/mi7773_exploratorydataanalysis-mysql-learningjourney-activity-7286794914921639936-ZDwP" target="_blank" rel="noopener">LinkedIn post</a></div>
+        </div>
+      </article>
+      <article class="proj" data-t="excel">
+        <a class="thumb" href="https://1drv.ms/x/c/dd09f72356635631/Ed9CYGy73XNOnr_F_DDICTIBBmnIZyMA4egotWa3TX0hUQ" target="_blank" rel="noopener"><img src="images/data_cleaning_and_analysis_with_excel.jpeg" alt="Excel data cleaning and analysis workbook"></a>
+        <div class="body">
+          <span class="label">Excel</span>
+          <h3><a href="https://1drv.ms/x/c/dd09f72356635631/Ed9CYGy73XNOnr_F_DDICTIBBmnIZyMA4egotWa3TX0hUQ" target="_blank" rel="noopener">Data Cleaning &amp; Analysis in Excel</a></h3>
+          <p>Cleaning, standardizing and analyzing a dataset entirely in Excel.</p>
+          <div class="links"><a href="https://1drv.ms/x/c/dd09f72356635631/Ed9CYGy73XNOnr_F_DDICTIBBmnIZyMA4egotWa3TX0hUQ" target="_blank" rel="noopener">View workbook</a><a href="https://www.linkedin.com/posts/mi7773_datacleaning-excel-datavisualization-activity-7288319396899373058-UTln" target="_blank" rel="noopener">LinkedIn post</a></div>
+        </div>
+      </article>
+      <article class="proj" data-t="software">
+        <a class="thumb code" href="https://github.com/mi7773/QuizItNow" target="_blank" rel="noopener">@app.route("/quiz")<br>def quiz(): …</a>
+        <div class="body">
+          <span class="label">Python · Flask</span>
+          <h3><a href="https://github.com/mi7773/QuizItNow" target="_blank" rel="noopener">QuizItNow</a></h3>
+          <p>A quiz web application built in Python with Flask.</p>
+          <div class="links"><a href="https://github.com/mi7773/QuizItNow" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+      </article>
+      <article class="proj" data-t="software">
+        <div class="thumb code">cast_ray(angle);<br>draw_wall(col, dist);</div>
+        <div class="body">
+          <span class="label">C · SDL2</span>
+          <h3>Maze</h3>
+          <p>A 3D raycasting engine written in C with SDL2.</p>
+          <div class="links"><a href="https://github.com/mi7773" target="_blank" rel="noopener">More on GitHub</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="head"><span class="label">Skills</span><h2>Toolbox</h2></div>
+    <div class="skills">
+      <div class="skillset"><h3>Business intelligence</h3><div class="chips"><span>Power BI</span><span>DAX</span><span>SSAS Tabular</span><span>KPI dashboards</span><span>Target reporting</span><span>Data visualization</span></div></div>
+      <div class="skillset"><h3>Data engineering</h3><div class="chips"><span>T-SQL</span><span>MySQL</span><span>SQL Server</span><span>SSMS</span><span>SSIS</span><span>ETL design</span><span>Data modeling</span><span>Data warehousing</span><span>Data cleaning</span></div></div>
+      <div class="skillset"><h3>Power Platform &amp; cloud</h3><div class="chips"><span>Power Automate</span><span>Power Apps (canvas)</span><span>Dataverse</span><span>Office Scripts</span><span>Azure app registration</span><span>Service principals</span></div></div>
+      <div class="skillset"><h3>Programming &amp; tools</h3><div class="chips"><span>Python</span><span>pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span><span>Playwright</span><span>Selenium</span><span>Flask</span><span>C</span><span>Git</span><span>Linux</span><span>Excel (advanced)</span></div></div>
+      <div class="skillset"><h3>Ways of working</h3><div class="chips"><span>Requirements gathering</span><span>Stakeholder management</span><span>Process automation</span><span>EDA</span></div></div>
+      <div class="skillset"><h3>Languages</h3><div class="chips"><span>Arabic · native</span><span>English · professional working</span></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="education">
+    <div class="head"><span class="label">Education</span><h2>Two engineering tracks</h2></div>
+    <div class="edu">
+      <div class="item"><h3>Software Engineering, Back-End Specialization</h3><p>ALX Africa / Holberton School · 2023 – 2025</p></div>
+      <div class="item"><h3>B.Eng. Mechanical Engineering</h3><p>Alexandria University, Faculty of Engineering · 2014 – 2021</p></div>
+    </div>
+    <h3 class="label" style="margin:40px 0 4px">Certifications</h3>
+    <ul class="certs">
+      <li><span>ALX Back-End Software Engineering</span><span>ALX Africa · 2025</span></li>
+      <li><span>Google Data Analytics Professional Certificate</span><span>Coursera · 2022</span></li>
+      <li><span>Google Project Management, UX Design, Digital Marketing &amp; E-commerce</span><span>Coursera · 2022</span></li>
+    </ul>
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <h2>Let's talk data.</h2>
+      <p>Open to conversations about BI, data engineering and automation roles and projects.</p>
+    </div>
+    <dl>
+      <div><dt>Email</dt><dd><a href="mailto:mahmoudismailabdelrazek@gmail.com" id="email">mahmoudismailabdelrazek@gmail.com</a><button class="copy" type="button" id="copy-email">Copy</button></dd></div>
+      <div><dt>WhatsApp</dt><dd><a href="https://wa.me/201282244419" target="_blank" rel="noopener">+20 128 224 4419</a></dd></div>
+      <div><dt>Elsewhere</dt><dd><a href="https://www.linkedin.com/in/mi7773" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/mi7773" target="_blank" rel="noopener">GitHub</a></dd></div>
+    </dl>
+  </section>
+
+</main>
+
+<footer class="site wrap">
+  <span>© 2026 Mahmoud Ismail</span>
+  <span>Alexandria, Egypt</span>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.filters button');
+  var cards=document.querySelectorAll('.proj');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.getAttribute('data-f');
+      btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+      cards.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-t')===f)});
+    });
+  });
+  var cb=document.getElementById('copy-email');
+  cb.addEventListener('click',function(){
+    var t=document.getElementById('email').textContent;
+    var done=function(){cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy'},1600)};
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,function(){sel()})}else{sel()}
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+  });
+})();
+</script>
+</body>
+</html>
